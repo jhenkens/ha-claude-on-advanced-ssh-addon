@@ -20,7 +20,7 @@ packages:
 init_commands:
   - npm install -g @anthropic-ai/claude-code
   - ln -s /addon_configs/terminal/.claude /root/.claude
-  - ln -s /addon_configs/terminal/CLAUDE.md /home/CLAUDE.md
+  - ln -s /addon_configs/terminal/CLAUDE.md /homeassistant/CLAUDE.md
   - "for f in /addon_configs/terminal/bin/*; do cp -n \"$f\" /usr/local/bin/ && chmod 755 \"/usr/local/bin/$(basename \"$f\")\"; done"
 ```
 3. In the configuration for `ha-mcp`, disable the external port (delete it), as we will be talking to it over the docker network
