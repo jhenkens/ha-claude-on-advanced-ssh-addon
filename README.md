@@ -27,7 +27,7 @@ init_commands:
 4. Copy the `addon_configs/terminal` folder to the `/addon_configs` folder on Home Assistant. Use whatever method you want for this.
 4. Restart the `app-ssh` addon and open a web terminal
 5. Type claude and login to claude. Once logged in, exit claude.
-6. Start the MCP Server. Grab the login url, and replace the home-assistant-ip with `81f33d0f-ha-mcp`. Enter the command on the `app-ssh` terminal (should look like `claude mcp add --transport http home-assistant http://81f33d0f-ha-mcp:9583/<your token here>`
+7. Start the MCP Server. Grab the private token. Enter the following command on the `app-ssh` terminal: `claude mcp add --scope user --transport http home-assistant http://81f33d0f-ha-mcp:9583/<your token here>`
 7. Connect to your HA instance with VSCode on your desktop/laptop via "Remote Connection", selecting SSH. Install the Claude extension to VSCode, and it should start working!
 
 ### Troubleshooting notes
