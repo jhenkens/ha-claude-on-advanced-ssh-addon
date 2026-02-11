@@ -1,9 +1,4 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "/etc/claude/statusline.sh",
-    "padding": 0
-  },
   "permissions": {
     "allow": [
       "Read(/homeassistant/**)",
@@ -26,7 +21,16 @@
       "Bash(curl -s -X GET http://supervisor/*)",
       "Bash(curl -s http://supervisor/*)",
       "Bash(ha-reload)",
-      "Bash(bluetoothctl *)"
+      "mcp__home-assistant__ha_search_entities",
+      "mcp__home-assistant__ha_set_entity",
+      "mcp__home-assistant__ha_config_get_dashboard",
+      "mcp__home-assistant__ha_config_set_dashboard",
+      "mcp__home-assistant__ha_get_card_documentation",
+      "WebFetch(domain:www.home-assistant.io)",
+      "mcp__home-assistant__ha_get_state",
+      "mcp__home-assistant__ha_get_entity",
+      "mcp__home-assistant__ha_config_get_automation",
+      "mcp__home-assistant__ha_config_set_automation"
     ],
     "deny": []
   }

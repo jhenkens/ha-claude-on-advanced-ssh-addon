@@ -12,19 +12,16 @@ By setting Claude up with access to both the filesystem and the MCP server, it c
 
 ## Steps
 1. Install [hassio/addon-ssh](https://github.com/hassio-addons/app-ssh) and [The Unofficial and Awesome Home Assistant MCP Server](https://github.com/homeassistant-ai/ha-mcp?tab=readme-ov-file)
-2. In the configuration for `app-ssh`:  
+2. In the configuration for `app-ssh`:
 ```
 packages:
   - npm
   - nodejs
 init_commands:
-  - npm install -g @anthropic-ai/claude-code
-  - ln -s /addon_configs/terminal/.claude /root/.claude
-  - ln -s /addon_configs/terminal/CLAUDE.md /homeassistant/CLAUDE.md
-  - "for f in /addon_configs/terminal/bin/*; do cp -n \"$f\" /usr/local/bin/ && chmod 755 \"/usr/local/bin/$(basename \"$f\")\"; done"
+  - bash /addon_configs/terminal/claude_init.sh
 ```
 3. In the configuration for `ha-mcp`, disable the external port (delete it), as we will be talking to it over the docker network
-4. Copy the `addon_configs/terminal` folder to the `/addon_configs` folder on Home Assistant. Use whatever method you want for this.
+4. Copy the `addon_configs/terminal` folder (including `claude_init.sh`) to the `/addon_configs` folder on Home Assistant. Ensure `claude_init.sh` is executable (`chmod +x`). Use whatever method you want for this.
 4. Restart the `app-ssh` addon and open a web terminal
 5. Type claude and login to claude. Once logged in, exit claude.
 7. Start the MCP Server. Grab the private token. Enter the following command on the `app-ssh` terminal: `claude mcp add --scope user --transport http home-assistant http://81f33d0f-ha-mcp:9583/<your token here>`
